@@ -1,5 +1,8 @@
 export default {
-  'hello': 'Hello',
-  'hello.world': 'Hello world!',
-  'welcome': 'Hello {name}!'
+  hello: {
+    world: 'Hello {param}!',
+    nested: {
+      translations: 'Translations'
+    }
+  }
 } as const
