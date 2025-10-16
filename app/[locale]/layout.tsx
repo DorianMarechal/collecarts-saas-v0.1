@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Exo_2, Rubik } from "next/font/google";
 import "../globals.css";
 import { getCurrentLocale } from "../../locales/server";
 import { ThemeProvider } from "@/components/theme-provider";
 import SubLayout from "./client/layout";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const Exo2 = Exo_2({
+  variable: "--font-exo-2",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const RubikFont = Rubik({
+  variable: "--font-rubik",
   subsets: ["latin"],
 });
 
@@ -31,7 +31,7 @@ export default async function RootLayout({
   return (
     <html lang={locale || "en"} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${Exo2.variable} ${RubikFont.variable} antialiased`}
       >
         <SubLayout params={Promise.resolve({ locale: locale || "en" })}>
           <ThemeProvider

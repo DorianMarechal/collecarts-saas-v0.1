@@ -1,4 +1,5 @@
 import EmailVerification from "@/emailTemplates/emailVerification"
+import CollecartsResetPasswordEmail from "@/emailTemplates/resetPassword"
 import { Resend } from "resend"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -8,21 +9,20 @@ export async function POST(req: Request) {
     const body = await req.json()
     const { from, to, subject, template, variables } = body
 
-
-
     let TemplateComponent
 
     switch (template) {
       case "welcome":
         break
       case "resetPassword":
-        TemplateComponent = EmailVerification({
-          link: variables.link
+        TemplateComponent = CollecartsResetPasswordEmail({
+          userFirstname: variables.userFirstname,
+          resetPasswordLink: variables.resetPasswordLink,
         })
         break
       case "verifyMail":
         TemplateComponent = EmailVerification({
-          link: variables.link
+          validationCode: variables.validationCode
         })
         break
       default:
